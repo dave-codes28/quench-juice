@@ -72,14 +72,8 @@ export default function ProductsPage() {
                       </Link>
                       <Button
                         className={cn(
-                          "py-2 px-4",
-                          juice.accent
-                            .replace("text", "bg")
-                            .replace("-500", "-600")
-                            .replace("-600", "-700")
-                            .replace("dark:text", "dark:bg")
-                            .replace("-400", "-600"),
-                          "hover:opacity-90",
+                          "py-2 px-4 font-bold border-2 border-orange-500 bg-orange-500 text-white shadow-md transition-all duration-200",
+                          "hover:bg-orange-600 hover:border-orange-600 hover:opacity-90",
                         )}
                         onClick={() => {
                           console.log("Chtl:", (window as any).Chtl, "Chatling:", (window as any).Chatling);

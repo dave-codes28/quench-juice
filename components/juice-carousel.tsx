@@ -100,35 +100,35 @@ export function JuiceCarousel() {
     if (isGingerShot) {
       if (isMobile) {
         return {
-          container: "w-32 h-32",
-          image: "w-32 h-32",
+          container: "w-44 h-44",
+          image: "w-44 h-44",
         }
       } else if (carouselSize.width < 640) {
         return {
-          container: "w-40 h-40",
-          image: "w-40 h-40",
+          container: "w-56 h-56",
+          image: "w-56 h-56",
         }
       } else {
         return {
-          container: "w-48 h-48 md:w-56 md:h-56",
-          image: "w-48 h-48 md:w-56 md:h-56",
+          container: "w-64 h-64 md:w-80 md:h-80",
+          image: "w-64 h-64 md:w-80 md:h-80",
         }
       }
     }
     if (isMobile) {
       return {
-        container: "w-56 h-56",
-        image: "w-56 h-56",
+        container: "w-72 h-72",
+        image: "w-72 h-72",
       }
     } else if (carouselSize.width < 640) {
       return {
-        container: "w-64 h-64",
-        image: "w-64 h-64",
+        container: "w-80 h-80",
+        image: "w-80 h-80",
       }
     } else {
       return {
-        container: "w-80 h-80 md:w-96 md:h-96",
-        image: "w-80 h-80 md:w-96 md:h-96",
+        container: "w-[28rem] h-[28rem] md:w-[32rem] md:h-[32rem]",
+        image: "w-[28rem] h-[28rem] md:w-[32rem] md:h-[32rem]",
       }
     }
   }
@@ -200,28 +200,27 @@ export function JuiceCarousel() {
         </div>
       </div>
 
-      {/* Static nav buttons */}
-      <Button
-        variant="ghost"
-        size={isMobile ? "default" : "icon"}
-        className="fixed md:absolute left-4 md:left-0 top-1/2 bg-white/80 dark:bg-gray-800/80 hover:bg-white/90 dark:hover:bg-gray-700/90 rounded-full shadow-md z-20"
-        style={{transform: 'translateY(-50%)'}}
-        onClick={handlePrev}
+      {/* Overlay navigation areas */}
+      <button
+        className="absolute left-0 top-0 h-full w-1/2 z-30 focus:outline-none bg-transparent"
+        style={{cursor: 'pointer'}}
         aria-label="Previous juice"
+        onClick={handlePrev}
       >
-        <ChevronLeft className="h-5 w-5 sm:h-6 sm:w-6" />
-      </Button>
-
-      <Button
-        variant="ghost"
-        size={isMobile ? "default" : "icon"}
-        className="fixed md:absolute right-4 md:right-0 top-1/2 bg-white/80 dark:bg-gray-800/80 hover:bg-white/90 dark:hover:bg-gray-700/90 rounded-full shadow-md z-20"
-        style={{transform: 'translateY(-50%)'}}
-        onClick={handleNext}
+        <span className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 dark:bg-gray-800/80 rounded-full p-1 shadow-md">
+          <ChevronLeft className="h-6 w-6 text-gray-700 dark:text-gray-200" />
+        </span>
+      </button>
+      <button
+        className="absolute right-0 top-0 h-full w-1/2 z-30 focus:outline-none bg-transparent"
+        style={{cursor: 'pointer'}}
         aria-label="Next juice"
+        onClick={handleNext}
       >
-        <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6" />
-      </Button>
+        <span className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 dark:bg-gray-800/80 rounded-full p-1 shadow-md">
+          <ChevronRight className="h-6 w-6 text-gray-700 dark:text-gray-200" />
+        </span>
+      </button>
 
       {/* Dots indicator */}
       <div className="flex justify-center items-center mt-6 space-x-2 w-full max-w-xs mx-auto">
