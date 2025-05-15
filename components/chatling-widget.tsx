@@ -14,7 +14,7 @@ export function ChatlingWidget() {
   useEffect(() => {
     // Set Chatling configuration
     window.chtlConfig = {
-      chatbotId: "2432456265"
+      chatbotId: "3611398584"
     }
 
     // Load Chatling script
@@ -23,7 +23,7 @@ export function ChatlingWidget() {
     script.type = "text/javascript"
     script.src = "https://chatling.ai/js/embed.js"
     script.id = "chtl-script"
-    script.dataset.id = "2432456265"
+    script.dataset.id = "3611398584"
     
     document.body.appendChild(script)
 
