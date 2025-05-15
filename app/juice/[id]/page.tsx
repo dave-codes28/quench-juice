@@ -135,15 +135,7 @@ export default function JuicePage({ params }: { params: { id: string } }) {
                   className={`bg-white dark:bg-gray-800 border-2 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all ${juice.accent} border-${juice.accent.split("-")[1].split(" ")[0]}`}
                   variant="outline"
                   onClick={() => {
-                    // Debug: log what is available
-                    console.log("Chtl:", (window as any).Chtl, "Chatling:", (window as any).Chatling);
-                    if (window.chtlConfig && (window as any).Chtl && typeof (window as any).Chtl.show === "function") {
-                      (window as any).Chtl.show();
-                    } else if ((window as any).Chatling && typeof (window as any).Chatling.open === "function") {
-                      (window as any).Chatling.open();
-                    } else {
-                      alert("Chat widget is not ready yet. Please try again in a moment.");
-                    }
+                    window.dispatchEvent(new Event("open-chat-widget"));
                   }}
                 >
                   Order Now

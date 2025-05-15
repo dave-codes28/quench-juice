@@ -23,22 +23,27 @@ export function ChatlingWidget() {
       hide: true // Hide the widget by default
     }
 
-    // Load Chatling script
-    const script = document.createElement('script')
-    script.async = true
-    script.type = "text/javascript"
-    script.src = "https://chatling.ai/js/embed.js"
-    script.id = "chtl-script"
-    script.dataset.id = "3611398584"
-    
-    document.body.appendChild(script)
+    // Only add the script if it doesn't exist
+    if (!document.getElementById("chtl-script")) {
+      const script = document.createElement('script')
+      script.async = true
+      script.type = "text/javascript"
+      script.src = "https://chatling.ai/js/embed.js"
+      script.id = "chtl-script"
+      script.dataset.id = "3611398584"
+      document.body.appendChild(script)
+    }
+
+    // Handler for opening chat
+    const openChatHandler = () => {
+      if (window.Chtl && typeof window.Chtl.show === "function") {
+        window.Chtl.show()
+      }
+    }
+    window.addEventListener("open-chat-widget", openChatHandler)
 
     return () => {
-      // Cleanup script when component unmounts
-      const scriptElement = document.getElementById('chtl-script')
-      if (scriptElement) {
-        document.body.removeChild(scriptElement)
-      }
+      window.removeEventListener("open-chat-widget", openChatHandler)
     }
   }, [])
 

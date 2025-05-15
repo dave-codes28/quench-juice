@@ -179,15 +179,7 @@ export function JuiceCarousel() {
 
           <Button
             onClick={() => {
-              // Debug: log what is available
-              console.log("Chtl:", (window as any).Chtl, "Chatling:", (window as any).Chatling);
-              if (window.chtlConfig && (window as any).Chtl && typeof (window as any).Chtl.show === "function") {
-                (window as any).Chtl.show();
-              } else if ((window as any).Chatling && typeof (window as any).Chatling.open === "function") {
-                (window as any).Chatling.open();
-              } else {
-                alert("Chat widget is not ready yet. Please try again in a moment.");
-              }
+              window.dispatchEvent(new Event("open-chat-widget"));
             }}
             className={cn(
               "bg-white dark:bg-white text-gray-900 dark:text-gray-900 font-semibold text-lg px-8 py-3 rounded-lg shadow-lg transition-all duration-200 mt-2 w-full max-w-xs sm:max-w-sm md:max-w-md border-2 border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-200",

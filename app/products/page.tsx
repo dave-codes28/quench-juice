@@ -76,14 +76,7 @@ export default function ProductsPage() {
                           "hover:bg-orange-600 hover:border-orange-600 hover:opacity-90",
                         )}
                         onClick={() => {
-                          console.log("Chtl:", (window as any).Chtl, "Chatling:", (window as any).Chatling);
-                          if (window.chtlConfig && (window as any).Chtl && typeof (window as any).Chtl.show === "function") {
-                            (window as any).Chtl.show();
-                          } else if ((window as any).Chatling && typeof (window as any).Chatling.open === "function") {
-                            (window as any).Chatling.open();
-                          } else {
-                            alert("Chat widget is not ready yet. Please try again in a moment.");
-                          }
+                          window.dispatchEvent(new Event("open-chat-widget"));
                         }}
                       >
                         Order Now
