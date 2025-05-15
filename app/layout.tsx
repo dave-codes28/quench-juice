@@ -15,8 +15,8 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${spaceGrotesk.variable} font-space-grotesk bg-white cream:bg-gray-950 text-gray-900 cream:text-gray-100`}>
-        <ThemeProvider attribute="class" defaultTheme="cream" enableSystem disableTransitionOnChange>
+      <body className={`${spaceGrotesk.variable} font-space-grotesk bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100`}>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           {children}
         </ThemeProvider>
       </body>
