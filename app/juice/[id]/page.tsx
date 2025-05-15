@@ -135,6 +135,7 @@ export default function JuicePage({ params }: { params: { id: string } }) {
                   className={`bg-white dark:bg-gray-800 border-2 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all ${juice.accent} border-${juice.accent.split("-")[1].split(" ")[0]}`}
                   variant="outline"
                   onClick={() => {
+                    console.log("Order Now clicked, dispatching open-chat-widget event");
                     window.dispatchEvent(new Event("open-chat-widget"));
                   }}
                 >

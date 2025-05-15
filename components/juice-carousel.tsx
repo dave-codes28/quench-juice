@@ -179,6 +179,7 @@ export function JuiceCarousel() {
 
           <Button
             onClick={() => {
+              console.log("Order Now clicked, dispatching open-chat-widget event");
               window.dispatchEvent(new Event("open-chat-widget"));
             }}
             className={cn(

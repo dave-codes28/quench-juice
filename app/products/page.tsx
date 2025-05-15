@@ -76,6 +76,7 @@ export default function ProductsPage() {
                           "hover:bg-orange-600 hover:border-orange-600 hover:opacity-90",
                         )}
                         onClick={() => {
+                          console.log("Order Now clicked, dispatching open-chat-widget event");
                           window.dispatchEvent(new Event("open-chat-widget"));
                         }}
                       >
