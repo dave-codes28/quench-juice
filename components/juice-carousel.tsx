@@ -179,7 +179,9 @@ export function JuiceCarousel() {
 
           <Button
             onClick={() => {
-              window.dispatchEvent(new Event('open-chat'))
+              if (window.chtlConfig && (window as any).Chtl) {
+                (window as any).Chtl.show()
+              }
             }}
             className={cn(
               "bg-white dark:bg-white text-gray-900 dark:text-gray-900 font-semibold text-lg px-8 py-3 rounded-lg shadow-lg transition-all duration-200 mt-2 w-full max-w-xs sm:max-w-sm md:max-w-md border-2 border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-200",
@@ -188,19 +190,6 @@ export function JuiceCarousel() {
             variant="outline"
           >
             Order Now
-          </Button>
-          <Button
-            onClick={() => {
-              window.dispatchEvent(new Event('open-chat'))
-            }}
-            className={cn(
-              "bg-white dark:bg-white text-green-700 dark:text-green-700 font-semibold text-base px-8 py-2 rounded-lg shadow transition-all duration-200 mt-2 w-full max-w-xs sm:max-w-sm md:max-w-md border border-green-300 dark:border-green-700 hover:bg-gray-50 dark:hover:bg-gray-200",
-            )}
-            style={{letterSpacing: '0.01em'}}
-            variant="outline"
-            data-testid="chat-trigger"
-          >
-            Chat with Sussan
           </Button>
         </div>
       </div>

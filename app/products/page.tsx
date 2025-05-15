@@ -82,9 +82,8 @@ export default function ProductsPage() {
                           "hover:opacity-90",
                         )}
                         onClick={() => {
-                          const chatButton = document.querySelector('[data-testid="chat-button"]')
-                          if (chatButton instanceof HTMLElement) {
-                            chatButton.click()
+                          if (window.chtlConfig && (window as any).Chtl) {
+                            (window as any).Chtl.show()
                           }
                         }}
                       >
