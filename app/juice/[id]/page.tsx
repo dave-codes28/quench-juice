@@ -135,9 +135,8 @@ export default function JuicePage({ params }: { params: { id: string } }) {
                   className={`bg-white dark:bg-gray-800 border-2 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all ${juice.accent} border-${juice.accent.split("-")[1].split(" ")[0]}`}
                   variant="outline"
                   onClick={() => {
-                    const chatButton = document.querySelector('[data-testid="chat-button"]')
-                    if (chatButton instanceof HTMLElement) {
-                      chatButton.click()
+                    if (window.chtlConfig && (window as any).Chtl) {
+                      (window as any).Chtl.show()
                     }
                   }}
                 >
