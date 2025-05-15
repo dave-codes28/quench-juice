@@ -92,11 +92,11 @@ export default function JuicePage({ params }: { params: { id: string } }) {
                   <div className={imageSize.inner + " relative flex items-center justify-center"}>
                     <Image
                       src={juice.image}
-                      alt={juice.name}
+                    alt={juice.name}
                       fill
                       className="object-contain"
                       priority
-                    />
+                  />
                   </div>
                 </div>
               </div>
@@ -113,7 +113,7 @@ export default function JuicePage({ params }: { params: { id: string } }) {
                         <li key={index}>{benefit}</li>
                       ))}
                     </ul>
-                  </div>
+            </div>
                   <div className="mb-6">
                     <h3 className={`text-lg font-medium mb-2 ${juice.accent}`}>Nutrition Facts (per 250ml)</h3>
                     <ul className="list-disc pl-5 space-y-1">
@@ -121,22 +121,28 @@ export default function JuicePage({ params }: { params: { id: string } }) {
                         <li key={index}>{fact}</li>
                       ))}
                     </ul>
-                  </div>
+                </div>
                   <div className="mb-6">
                     <h3 className={`text-lg font-medium mb-2 ${juice.accent}`}>Storage Instructions</h3>
                     <ul className="list-disc pl-5 space-y-1">
                       {juice.storage.map((instruction, index) => (
                         <li key={index}>{instruction}</li>
-                      ))}
-                    </ul>
-                  </div>
+                  ))}
+                </ul>
+              </div>
                 </div>
                 <Button
                   className={`bg-white dark:bg-gray-800 border-2 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all ${juice.accent} border-${juice.accent.split("-")[1].split(" ")[0]}`}
                   variant="outline"
                   onClick={() => {
-                    if (window.chtlConfig && (window as any).Chtl) {
-                      (window as any).Chtl.show()
+                    // Debug: log what is available
+                    console.log("Chtl:", (window as any).Chtl, "Chatling:", (window as any).Chatling);
+                    if (window.chtlConfig && (window as any).Chtl && typeof (window as any).Chtl.show === "function") {
+                      (window as any).Chtl.show();
+                    } else if ((window as any).Chatling && typeof (window as any).Chatling.open === "function") {
+                      (window as any).Chatling.open();
+                    } else {
+                      alert("Chat widget is not ready yet. Please try again in a moment.");
                     }
                   }}
                 >
