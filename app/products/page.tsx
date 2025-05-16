@@ -9,9 +9,14 @@ import { juices } from "@/lib/juices"
 import Image from "next/image"
 import { FloatingChat } from "@/components/floating-chat"
 import { useOrderModal } from "@/components/order-modal-provider"
+import { useCart } from "@/components/cart-context"
+import { CartPopup } from "@/components/cart-popup"
+import { useState } from "react"
 
 export default function ProductsPage() {
   const { openOrderModal } = useOrderModal();
+  const { addToCart } = useCart();
+  const [cartOpen, setCartOpen] = useState(false);
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
@@ -76,7 +81,15 @@ export default function ProductsPage() {
                         type="button"
                         aria-label={`Add ${juice.name} to cart`}
                         className="ml-2 text-4xl font-bold text-orange-500 hover:text-orange-600 focus:outline-none"
-                        // onClick={() => addToCart(juice)} // To be implemented
+                        onClick={() => {
+                          addToCart({
+                            id: juice.id,
+                            name: juice.name,
+                            image: juice.image,
+                            price: juice.price,
+                          });
+                          setCartOpen(true);
+                        }}
                       >
                         +
                       </button>
@@ -87,6 +100,14 @@ export default function ProductsPage() {
             ))}
           </div>
         </div>
+        <CartPopup
+          open={cartOpen}
+          onClose={() => setCartOpen(false)}
+          onBuy={() => {
+            setCartOpen(false);
+            openOrderModal();
+          }}
+        />
       </main>
       <Footer />
     </div>
