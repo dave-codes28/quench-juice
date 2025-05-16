@@ -72,15 +72,14 @@ export default function ProductsPage() {
                       >
                         View Details
                       </Link>
-                      <a
-                        href="#"
-                        onClick={e => { e.preventDefault(); openOrderModal(); }}
-                        className={cn(
-                          "py-2 px-4 font-bold border-2 border-orange-500 bg-orange-500 text-white shadow-md transition-all duration-200 flex items-center justify-center rounded hover:bg-orange-600 hover:border-orange-600 hover:opacity-90",
-                        )}
+                      <button
+                        type="button"
+                        aria-label={`Add ${juice.name} to cart`}
+                        className="ml-2 flex items-center justify-center rounded-full bg-orange-500 hover:bg-orange-600 text-white w-10 h-10 shadow-md border-2 border-orange-500 hover:border-orange-600 transition-all duration-200 text-xl font-bold focus:outline-none focus:ring-2 focus:ring-orange-400"
+                        // onClick={() => addToCart(juice)} // To be implemented
                       >
-                        Order Now
-                      </a>
+                        +
+                      </button>
                     </div>
                   </div>
                 </div>
