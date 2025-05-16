@@ -75,7 +75,7 @@ export default function ProductsPage() {
                       <button
                         type="button"
                         aria-label={`Add ${juice.name} to cart`}
-                        className="ml-2 flex items-center justify-center rounded-full bg-orange-500 hover:bg-orange-600 text-white w-10 h-10 shadow-md border-2 border-orange-500 hover:border-orange-600 transition-all duration-200 text-xl font-bold focus:outline-none focus:ring-2 focus:ring-orange-400"
+                        className="ml-2 text-4xl font-bold text-orange-500 hover:text-orange-600 focus:outline-none"
                         // onClick={() => addToCart(juice)} // To be implemented
                       >
                         +

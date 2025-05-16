@@ -183,22 +183,24 @@ export function JuiceCarousel() {
             {juices[currentIndex].description}
           </p>
 
-          <button
-            type="button"
-            aria-label={`Add ${juices[currentIndex].name} to cart`}
-            className="mt-2 text-4xl font-bold text-gray-900 dark:text-white focus:outline-none"
-            onClick={() => {
-              addToCart({
-                id: juices[currentIndex].id,
-                name: juices[currentIndex].name,
-                image: juices[currentIndex].image,
-                price: juices[currentIndex].price,
-              })
-              setCartOpen(true)
-            }}
-          >
-            +
-          </button>
+          <div className="flex w-full justify-center mt-4 mb-2">
+            <button
+              type="button"
+              aria-label={`Add ${juices[currentIndex].name} to cart`}
+              className="text-4xl font-bold text-gray-900 dark:text-white focus:outline-none"
+              onClick={() => {
+                addToCart({
+                  id: juices[currentIndex].id,
+                  name: juices[currentIndex].name,
+                  image: juices[currentIndex].image,
+                  price: juices[currentIndex].price,
+                })
+                setCartOpen(true)
+              }}
+            >
+              +
+            </button>
+          </div>
         </div>
       </div>
 
