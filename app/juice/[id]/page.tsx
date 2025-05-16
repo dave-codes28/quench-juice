@@ -131,15 +131,15 @@ export default function JuicePage({ params }: { params: { id: string } }) {
                 </ul>
               </div>
                 </div>
-                <Button
-                  className={`bg-white dark:bg-gray-800 border-2 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all ${juice.accent} border-${juice.accent.split("-")[1].split(" ")[0]}`}
-                  variant="outline"
-                  onClick={() => {
-                    window.open('https://tally.so/r/w75LqR', '_blank', 'noopener,noreferrer');
-                  }}
+                <a
+                  href="/order"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`bg-white dark:bg-gray-800 border-2 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all ${juice.accent} border-${juice.accent.split("-")[1].split(" ")[0]} flex items-center justify-center rounded py-2 px-4 font-bold`}
+                  style={{marginTop: '1rem', marginBottom: '1rem'}}
                 >
                   Order Now
-                </Button>
+                </a>
 
                 {/* Mobile navigation buttons below details */}
                 <div className="flex md:hidden justify-between mt-8 gap-4">

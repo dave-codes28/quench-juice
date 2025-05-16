@@ -70,17 +70,16 @@ export default function ProductsPage() {
                       >
                         View Details
                       </Link>
-                      <Button
+                      <a
+                        href="/order"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className={cn(
-                          "py-2 px-4 font-bold border-2 border-orange-500 bg-orange-500 text-white shadow-md transition-all duration-200",
-                          "hover:bg-orange-600 hover:border-orange-600 hover:opacity-90",
+                          "py-2 px-4 font-bold border-2 border-orange-500 bg-orange-500 text-white shadow-md transition-all duration-200 flex items-center justify-center rounded hover:bg-orange-600 hover:border-orange-600 hover:opacity-90",
                         )}
-                        onClick={() => {
-                          window.open('https://tally.so/r/w75LqR', '_blank', 'noopener,noreferrer');
-                        }}
                       >
                         Order Now
-                      </Button>
+                      </a>
                     </div>
                   </div>
                 </div>
