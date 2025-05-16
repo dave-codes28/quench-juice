@@ -183,11 +183,26 @@ export function JuiceCarousel() {
             {juices[currentIndex].description}
           </p>
 
+          {/* Dots indicator - now above the plus button */}
+          <div className="flex justify-center items-center mt-6 space-x-2 w-full max-w-xs mx-auto">
+            {juices.map((_, index) => (
+              <button
+                key={index}
+                className={`w-2 h-2 rounded-full transition-all ${
+                  index === currentIndex ? "bg-gray-800 dark:bg-gray-200 w-4" : "bg-gray-300 dark:bg-gray-700"
+                }`}
+                onClick={() => setCurrentIndex(index)}
+                aria-label={`Go to juice ${index + 1}`}
+              />
+            ))}
+          </div>
+
+          {/* Bigger orange plus button below dots */}
           <div className="flex w-full justify-center mt-4 mb-2">
             <button
               type="button"
               aria-label={`Add ${juices[currentIndex].name} to cart`}
-              className="text-4xl font-bold text-gray-900 dark:text-white focus:outline-none"
+              className="text-6xl font-bold text-orange-500 hover:text-orange-600 focus:outline-none"
               onClick={() => {
                 addToCart({
                   id: juices[currentIndex].id,
@@ -225,20 +240,6 @@ export function JuiceCarousel() {
           <ChevronRight className="h-6 w-6 text-gray-700 dark:text-gray-200" />
         </span>
       </button>
-
-      {/* Dots indicator */}
-      <div className="flex justify-center items-center mt-6 space-x-2 w-full max-w-xs mx-auto">
-        {juices.map((_, index) => (
-          <button
-            key={index}
-            className={`w-2 h-2 rounded-full transition-all ${
-              index === currentIndex ? "bg-gray-800 dark:bg-gray-200 w-4" : "bg-gray-300 dark:bg-gray-700"
-            }`}
-            onClick={() => setCurrentIndex(index)}
-            aria-label={`Go to juice ${index + 1}`}
-          />
-        ))}
-      </div>
 
       <CartPopup
         open={cartOpen}
