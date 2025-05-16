@@ -69,10 +69,10 @@ export default function ProductsPage() {
                       <Link
                         href={`/juice/${juice.id}`}
                         className={cn(
-                          "flex-grow text-center py-2 px-4 rounded border-2 transition-colors",
+                          "flex-grow text-center py-2 px-4 rounded-lg border-2 transition-colors shadow-md font-semibold text-base sm:text-lg",
                           juice.borderAccent,
                           juice.accent,
-                          "hover:bg-gray-50 dark:hover:bg-gray-800",
+                          "hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-orange-300 dark:focus:ring-orange-700",
                         )}
                       >
                         View Details
@@ -80,7 +80,8 @@ export default function ProductsPage() {
                       <button
                         type="button"
                         aria-label={`Add ${juice.name} to cart`}
-                        className="ml-6 text-6xl font-extrabold text-orange-500 hover:text-orange-600 focus:outline-none drop-shadow-lg transition-transform transform hover:scale-110"
+                        className="ml-6 flex items-center justify-center text-6xl font-extrabold text-orange-500 hover:text-orange-600 focus:outline-none shadow-lg bg-white dark:bg-gray-900 rounded-lg px-4 py-2 transition-all hover:scale-110 border border-orange-200 dark:border-orange-700"
+                        style={{ boxShadow: '0 4px 16px 0 rgba(255, 140, 0, 0.10)' }}
                         onClick={() => {
                           addToCart({
                             id: juice.id,
@@ -91,7 +92,7 @@ export default function ProductsPage() {
                           setCartOpen(true);
                         }}
                       >
-                        +
+                        <span className="w-full text-center leading-none">+</span>
                       </button>
                     </div>
                   </div>
