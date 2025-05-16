@@ -219,27 +219,19 @@ export function JuiceCarousel() {
         </div>
       </div>
 
-      {/* Overlay navigation areas */}
+      {/* Overlay navigation areas for swipe/click navigation */}
       <button
         className="absolute left-0 top-0 h-full w-1/2 z-30 focus:outline-none bg-transparent"
         style={{cursor: 'pointer'}}
         aria-label="Previous juice"
         onClick={handlePrev}
-      >
-        <span className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 dark:bg-gray-800/80 rounded-full p-1 shadow-md">
-          <ChevronLeft className="h-6 w-6 text-gray-700 dark:text-gray-200" />
-        </span>
-      </button>
+      />
       <button
         className="absolute right-0 top-0 h-full w-1/2 z-30 focus:outline-none bg-transparent"
         style={{cursor: 'pointer'}}
         aria-label="Next juice"
         onClick={handleNext}
-      >
-        <span className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 dark:bg-gray-800/80 rounded-full p-1 shadow-md">
-          <ChevronRight className="h-6 w-6 text-gray-700 dark:text-gray-200" />
-        </span>
-      </button>
+      />
 
       <CartPopup
         open={cartOpen}
