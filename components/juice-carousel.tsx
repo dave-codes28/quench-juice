@@ -11,6 +11,8 @@ import { useMobile } from "@/hooks/use-mobile"
 import { juices } from "@/lib/juices"
 import Image from "next/image"
 import { useOrderModal } from "@/components/order-modal-provider"
+import { useCart } from "./cart-context"
+import { CartPopup } from "./cart-popup"
 
 export function JuiceCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -21,7 +23,9 @@ export function JuiceCarousel() {
   const carouselRef = useRef<HTMLDivElement>(null)
   const router = useRouter()
   const isMobile = useMobile()
-  const { openOrderModal } = useOrderModal();
+  const { openOrderModal } = useOrderModal()
+  const { addToCart } = useCart()
+  const [cartOpen, setCartOpen] = useState(false)
 
   // Update carousel size on window resize
   useEffect(() => {
@@ -182,8 +186,16 @@ export function JuiceCarousel() {
           <button
             type="button"
             aria-label={`Add ${juices[currentIndex].name} to cart`}
-            className="mt-2 flex items-center justify-center rounded-full bg-orange-500 hover:bg-orange-600 text-white w-12 h-12 shadow-md border-2 border-orange-500 hover:border-orange-600 transition-all duration-200 text-2xl font-bold focus:outline-none focus:ring-2 focus:ring-orange-400"
-            // onClick={() => addToCart(juices[currentIndex])} // To be implemented
+            className="mt-2 text-4xl font-bold text-gray-900 dark:text-white focus:outline-none"
+            onClick={() => {
+              addToCart({
+                id: juices[currentIndex].id,
+                name: juices[currentIndex].name,
+                image: juices[currentIndex].image,
+                price: juices[currentIndex].price,
+              })
+              setCartOpen(true)
+            }}
           >
             +
           </button>
@@ -225,6 +237,15 @@ export function JuiceCarousel() {
           />
         ))}
       </div>
+
+      <CartPopup
+        open={cartOpen}
+        onClose={() => setCartOpen(false)}
+        onBuy={() => {
+          setCartOpen(false)
+          openOrderModal()
+        }}
+      />
     </div>
   )
 }
