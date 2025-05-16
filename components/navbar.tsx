@@ -7,10 +7,12 @@ import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { ThemeToggle } from "@/components/theme-toggle"
 import Image from "next/image"
+import { useOrderModal } from "@/components/order-modal-provider"
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const { openOrderModal } = useOrderModal();
 
   // Add scroll detection for better mobile experience
   useEffect(() => {
@@ -84,13 +86,7 @@ export function Navbar() {
             <ThemeToggle />
             <Button
               className="bg-green-500 hover:bg-green-600 dark:bg-green-600 dark:hover:bg-green-700 text-sm lg:text-base py-1.5 px-3 lg:py-2 lg:px-4"
-              onClick={() => {
-                // Find and click the floating chat button to open the chat
-                const chatButton = document.querySelector('[data-testid="chat-button"]')
-                if (chatButton instanceof HTMLElement) {
-                  chatButton.click()
-                }
-              }}
+              onClick={openOrderModal}
             >
               Order Now
             </Button>
@@ -150,12 +146,8 @@ export function Navbar() {
             <Button
               className="bg-green-500 hover:bg-green-600 dark:bg-green-600 dark:hover:bg-green-700 w-full text-sm py-1.5"
               onClick={() => {
-                setIsMenuOpen(false) // Close the mobile menu
-                // Find and click the floating chat button to open the chat
-                const chatButton = document.querySelector('[data-testid="chat-button"]')
-                if (chatButton instanceof HTMLElement) {
-                  chatButton.click()
-                }
+                setIsMenuOpen(false)
+                openOrderModal();
               }}
             >
               Order Now
