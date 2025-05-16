@@ -55,7 +55,7 @@ export default function ProductsPage() {
                     </div>
                   </div>
 
-                  <div className="bg-white dark:bg-gray-900 p-4 sm:p-6 flex-grow flex flex-col">
+                  <div className="bg-white dark:bg-gray-900 p-4 sm:p-6 flex-grow flex flex-col max-w-[90%] mx-auto">
                     <div className="flex justify-between items-center mb-2">
                       <h2 className={cn("text-lg sm:text-xl font-medium font-pt-sans-caption", juice.accent)}>{juice.name}</h2>
                       <span className="font-bold text-sm sm:text-base dark:text-gray-300">{juice.price}</span>
@@ -80,7 +80,7 @@ export default function ProductsPage() {
                       <button
                         type="button"
                         aria-label={`Add ${juice.name} to cart`}
-                        className="ml-2 text-4xl font-bold text-orange-500 hover:text-orange-600 focus:outline-none"
+                        className="ml-6 text-6xl font-extrabold text-orange-500 hover:text-orange-600 focus:outline-none drop-shadow-lg transition-transform transform hover:scale-110"
                         onClick={() => {
                           addToCart({
                             id: juice.id,
