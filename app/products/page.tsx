@@ -8,8 +8,10 @@ import { cn } from "@/lib/utils"
 import { juices } from "@/lib/juices"
 import Image from "next/image"
 import { FloatingChat } from "@/components/floating-chat"
+import { useOrderModal } from "@/components/order-modal-provider"
 
 export default function ProductsPage() {
+  const { openOrderModal } = useOrderModal();
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
@@ -71,9 +73,8 @@ export default function ProductsPage() {
                         View Details
                       </Link>
                       <a
-                        href="/order"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        href="#"
+                        onClick={e => { e.preventDefault(); openOrderModal(); }}
                         className={cn(
                           "py-2 px-4 font-bold border-2 border-orange-500 bg-orange-500 text-white shadow-md transition-all duration-200 flex items-center justify-center rounded hover:bg-orange-600 hover:border-orange-600 hover:opacity-90",
                         )}

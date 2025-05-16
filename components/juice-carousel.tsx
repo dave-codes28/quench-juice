@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils"
 import { useMobile } from "@/hooks/use-mobile"
 import { juices } from "@/lib/juices"
 import Image from "next/image"
+import { useOrderModal } from "@/components/order-modal-provider"
 
 export function JuiceCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -20,6 +21,7 @@ export function JuiceCarousel() {
   const carouselRef = useRef<HTMLDivElement>(null)
   const router = useRouter()
   const isMobile = useMobile()
+  const { openOrderModal } = useOrderModal();
 
   // Update carousel size on window resize
   useEffect(() => {
@@ -178,9 +180,8 @@ export function JuiceCarousel() {
           </p>
 
           <a
-            href="/order"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#"
+            onClick={e => { e.preventDefault(); openOrderModal(); }}
             className={cn(
               "bg-white dark:bg-white text-gray-900 dark:text-gray-900 font-semibold text-lg px-8 py-3 rounded-lg shadow-lg transition-all duration-200 mt-2 w-full max-w-xs sm:max-w-sm md:max-w-md border-2 border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-200 flex items-center justify-center",
             )}

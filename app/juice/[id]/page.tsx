@@ -11,6 +11,7 @@ import { useEffect, useState } from "react"
 import { notFound, useRouter } from "next/navigation"
 import Image from "next/image"
 import { juices } from "@/lib/juices"
+import { useOrderModal } from "@/components/order-modal-provider"
 
 export default function JuicePage({ params }: { params: { id: string } }) {
   const juice = juices.find((j) => j.id === params.id)
@@ -18,6 +19,7 @@ export default function JuicePage({ params }: { params: { id: string } }) {
   const currentIndex = juices.findIndex((j) => j.id === params.id)
   const prevJuice = juices[(currentIndex - 1 + juices.length) % juices.length]
   const nextJuice = juices[(currentIndex + 1) % juices.length]
+  const { openOrderModal } = useOrderModal();
 
   if (!juice) {
     notFound()
@@ -132,9 +134,8 @@ export default function JuicePage({ params }: { params: { id: string } }) {
               </div>
                 </div>
                 <a
-                  href="/order"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="#"
+                  onClick={e => { e.preventDefault(); openOrderModal(); }}
                   className={`bg-white dark:bg-gray-800 border-2 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all ${juice.accent} border-${juice.accent.split("-")[1].split(" ")[0]} flex items-center justify-center rounded py-2 px-4 font-bold`}
                   style={{marginTop: '1rem', marginBottom: '1rem'}}
                 >
