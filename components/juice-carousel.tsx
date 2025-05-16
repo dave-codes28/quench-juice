@@ -179,15 +179,14 @@ export function JuiceCarousel() {
             {juices[currentIndex].description}
           </p>
 
-          <a
-            href="#"
-            onClick={e => { e.preventDefault(); openOrderModal(); }}
-            className={cn(
-              "bg-white dark:bg-white text-gray-900 dark:text-gray-900 font-semibold text-lg px-8 py-3 rounded-lg shadow-lg transition-all duration-200 mt-2 w-full max-w-xs sm:max-w-sm md:max-w-md border-2 border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-200 flex items-center justify-center",
-            )}
+          <button
+            type="button"
+            aria-label={`Add ${juices[currentIndex].name} to cart`}
+            className="mt-2 flex items-center justify-center rounded-full bg-orange-500 hover:bg-orange-600 text-white w-12 h-12 shadow-md border-2 border-orange-500 hover:border-orange-600 transition-all duration-200 text-2xl font-bold focus:outline-none focus:ring-2 focus:ring-orange-400"
+            // onClick={() => addToCart(juices[currentIndex])} // To be implemented
           >
-            Order Now
-          </a>
+            +
+          </button>
         </div>
       </div>
 
